@@ -2,13 +2,16 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from typing import Optional, List
 
+# Acepta opcionalmente un "+" inicial y entre 7 y 15 dígitos (E.164 simplificado)
+PHONE_PATTERN = r"^\+?\d{7,15}$"
+
 
 class HospitalCreate(BaseModel):
     name: str = Field(..., min_length=2)
     state: str = Field(..., min_length=2)
     city: Optional[str] = None
     address: Optional[str] = None
-    phone: str = Field(..., min_length=6)
+    phone: str = Field(..., pattern=PHONE_PATTERN)
 
 
 class HospitalResponse(BaseModel):
@@ -31,18 +34,21 @@ class NeedCreate(BaseModel):
     hospital_state: Optional[str] = None
     hospital_city: Optional[str] = None
     hospital_address: Optional[str] = None
-    hospital_phone: Optional[str] = None
+    hospital_phone: Optional[str] = Field(None, pattern=PHONE_PATTERN)
 
     supply_name: str = Field(..., min_length=2)
     quantity_needed: int = Field(..., gt=0)
     urgency: str = Field(default="media", pattern="^(alta|media|baja)$")
     contact_name: Optional[str] = None
-    contact_phone: str = Field(..., min_length=6)
+    contact_phone: str = Field(..., pattern=PHONE_PATTERN)
 
 
 class NeedUpdate(BaseModel):
+    supply_name: Optional[str] = Field(None, min_length=2)
     quantity_needed: Optional[int] = Field(None, gt=0)
     urgency: Optional[str] = Field(None, pattern="^(alta|media|baja)$")
+    contact_name: Optional[str] = None
+    contact_phone: Optional[str] = Field(None, pattern=PHONE_PATTERN)
     status: Optional[str] = Field(None, pattern="^(abierta|cubierta)$")
 
 

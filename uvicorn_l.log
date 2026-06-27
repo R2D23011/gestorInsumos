@@ -1,0 +1,44 @@
+INFO:     Started server process [6680]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8127 (Press CTRL+C to quit)
+2026-06-27 13:37:24,896 - AUDIT - Nueva necesidad reportada: hospital=1 insumo=Jeringas
+INFO:audit_logger:Nueva necesidad reportada: hospital=1 insumo=Jeringas
+INFO:api_logger:Method: POST | Path: /needs/ | Status: 200 | User: anonymous | Time: 0.0302s
+INFO:     127.0.0.1:50971 - "POST /needs/ HTTP/1.1" 200 OK
+2026-06-27 13:37:24,986 - AUDIT - Nueva necesidad reportada: hospital=2 insumo=Guantes
+INFO:audit_logger:Nueva necesidad reportada: hospital=2 insumo=Guantes
+INFO:api_logger:Method: POST | Path: /needs/ | Status: 200 | User: anonymous | Time: 0.0116s
+INFO:     127.0.0.1:50972 - "POST /needs/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0057s
+INFO:     127.0.0.1:50973 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0044s
+INFO:     127.0.0.1:58399 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0200s
+INFO:     127.0.0.1:54270 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: OPTIONS | Path: /needs/1 | Status: 200 | User: anonymous | Time: 0.0010s
+INFO:     127.0.0.1:54270 - "OPTIONS /needs/1 HTTP/1.1" 200 OK
+2026-06-27 13:41:44,764 - AUDIT - Necesidad 1 actualizada -> cantidad=200 status=cubierta
+INFO:audit_logger:Necesidad 1 actualizada -> cantidad=200 status=cubierta
+INFO:api_logger:Method: PUT | Path: /needs/1 | Status: 200 | User: anonymous | Time: 0.0104s
+INFO:     127.0.0.1:54270 - "PUT /needs/1 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0050s
+INFO:     127.0.0.1:54270 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: OPTIONS | Path: /needs/2 | Status: 200 | User: anonymous | Time: 0.0000s
+INFO:     127.0.0.1:54270 - "OPTIONS /needs/2 HTTP/1.1" 200 OK
+2026-06-27 13:41:46,359 - AUDIT - Necesidad 2 actualizada -> cantidad=100 status=cubierta
+INFO:audit_logger:Necesidad 2 actualizada -> cantidad=100 status=cubierta
+INFO:api_logger:Method: PUT | Path: /needs/2 | Status: 200 | User: anonymous | Time: 0.0129s
+INFO:     127.0.0.1:54270 - "PUT /needs/2 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0050s
+INFO:     127.0.0.1:54270 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0051s
+INFO:     127.0.0.1:52617 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0026s
+INFO:     127.0.0.1:61617 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0041s
+INFO:     127.0.0.1:61617 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0051s
+INFO:     127.0.0.1:49884 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0071s
+INFO:     127.0.0.1:61822 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK

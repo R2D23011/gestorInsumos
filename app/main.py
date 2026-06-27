@@ -2,7 +2,7 @@ import time
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from .routes import hospitals_router, needs_router
+from .routes import hospitals_router, needs_router, stats_router
 
 # Configuración básica de logs
 logging.basicConfig(level=logging.INFO)
@@ -48,6 +48,7 @@ async def log_requests(request: Request, call_next):
 # Incluir las rutas
 app.include_router(hospitals_router)
 app.include_router(needs_router)
+app.include_router(stats_router)
 
 @app.get("/")
 def root():

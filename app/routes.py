@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session, selectinload
+from sqlalchemy import distinct, func
 from typing import List, Optional
 from math import ceil
 import logging
@@ -15,6 +16,24 @@ if not logger.handlers:
 
 hospitals_router = APIRouter(prefix="/hospitals", tags=["Hospitals"])
 needs_router = APIRouter(prefix="/needs", tags=["Needs"])
+stats_router = APIRouter(prefix="/stats", tags=["Stats"])
+
+
+@stats_router.get("/")
+def get_stats(db: Session = Depends(database.get_db)):
+    """Métricas públicas para la portada: centros activos y necesidades."""
+    open_needs = db.query(func.count(models.Need.id)).filter(models.Need.status == "abierta").scalar()
+    fulfilled_needs = db.query(func.count(models.Need.id)).filter(models.Need.status == "cubierta").scalar()
+    active_hospitals = (
+        db.query(func.count(distinct(models.Need.hospital_id)))
+        .filter(models.Need.status == "abierta")
+        .scalar()
+    )
+    return {
+        "active_hospitals": active_hospitals or 0,
+        "open_needs": open_needs or 0,
+        "fulfilled_needs": fulfilled_needs or 0,
+    }
 
 
 @hospitals_router.get("/", response_model=schemas.PaginatedHospitals)
