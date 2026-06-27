@@ -6,10 +6,23 @@ from . import models, schemas, database
 router = APIRouter(prefix="/inventory", tags=["Inventory"])
 
 @router.get("/", response_model=List[schemas.InventoryResponse])
-def get_inventory(skip: int = 0, limit: int = 100, db: Session = Depends(database.get_db)):
-    """Obtiene la lista de todos los inventarios reportados."""
-    items = db.query(models.Inventory).offset(skip).limit(limit).all()
-    return items
+def get_inventory(
+    hospital_id: Optional[int] = None,
+    only_urgent: bool = False,
+    db: Session = Depends(database.get_db)
+):
+    """Obtiene el inventario con filtros dinámicos para la web."""
+    query = db.query(models.Inventory)
+    
+    # Filtrar por un hospital específico
+    if hospital_id:
+        query = query.filter(models.Inventory.hospital_id == hospital_id)
+    
+    # Mostrar solo los insumos donde la necesidad es mayor al stock (Urgencias)
+    if only_urgent:
+        query = query.filter(models.Inventory.required_quantity > 0)
+        
+    return query.all()
 
 @router.put("/{inventory_id}", response_model=schemas.InventoryResponse)
 def update_inventory(
