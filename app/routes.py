@@ -17,7 +17,12 @@ if not logger.handlers:
 hospitals_router = APIRouter(prefix="/hospitals", tags=["Hospitals"])
 needs_router = APIRouter(prefix="/needs", tags=["Needs"])
 stats_router = APIRouter(prefix="/stats", tags=["Stats"])
+head_router = APIRouter(prefix="/head", tags=["Head"])
 
+@head_router.head("/")
+def head_check():
+    """Endpoint para monitoreo de UptimeRobot (Evita el error 405)."""
+    return None
 
 @stats_router.get("/")
 def get_stats(db: Session = Depends(database.get_db)):

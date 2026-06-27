@@ -42,3 +42,17 @@ INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous 
 INFO:     127.0.0.1:49884 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
 INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0071s
 INFO:     127.0.0.1:61822 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0046s
+INFO:     127.0.0.1:57588 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /stats/ | Status: 200 | User: anonymous | Time: 0.0132s
+INFO:     127.0.0.1:53548 - "GET /stats/ HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0153s
+INFO:     127.0.0.1:53548 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0103s
+INFO:     127.0.0.1:52904 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0045s
+INFO:     127.0.0.1:59086 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0108s
+INFO:     127.0.0.1:54653 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
+INFO:api_logger:Method: GET | Path: /hospitals/ | Status: 200 | User: anonymous | Time: 0.0047s
+INFO:     127.0.0.1:50696 - "GET /hospitals/?page=1&page_size=12 HTTP/1.1" 200 OK
