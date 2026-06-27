@@ -2,16 +2,14 @@ import time
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from . import models
-from .database import engine
-from .routes import router
+from .routes import hospitals_router, needs_router
 
 # Configuración básica de logs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("api_logger")
 
-# Crear tablas en BD (En producción se usan migraciones como Alembic, pero esto sirve para el MVP)
-models.Base.metadata.create_all(bind=engine)
+# El esquema de la BD lo gestiona Alembic (alembic upgrade head).
+# Ya no usamos create_all para evitar conflictos con las migraciones.
 
 app = FastAPI(
     title="Logística Humanitaria API",
@@ -48,7 +46,8 @@ async def log_requests(request: Request, call_next):
     return response
 
 # Incluir las rutas
-app.include_router(router)
+app.include_router(hospitals_router)
+app.include_router(needs_router)
 
 @app.get("/")
 def root():
